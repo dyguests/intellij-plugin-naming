@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.fanhl.plugin.naming</id>
     <name>Naming</name>
-    <version>1.0</version>
+    <version>0.1</version>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
     <description><![CDATA[
