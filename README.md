@@ -8,3 +8,6 @@ a plugin for rename.like:
     myUrlRoot
     MY_URL_ROOT
 
+# License
+
+MIT © dyguests
