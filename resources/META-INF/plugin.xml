@@ -39,7 +39,6 @@
         <action id="naming" class="com.fanhl.plugin.naming.NamingAction" text="Naming"
                 description="Rename your fields/methods">
             <add-to-group group-id="GenerateGroup" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="A"/>
         </action>
     </actions>
 

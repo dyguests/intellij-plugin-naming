@@ -22,6 +22,8 @@ public class NamingAction extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
         PsiClass psiClass = getPsiClass(e);
+        NamingDialog dialog = new NamingDialog(psiClass);
+        dialog.show();
     }
 
     @Override
