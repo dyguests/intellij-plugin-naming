@@ -2,6 +2,10 @@ package com.fanhl.plugin.naming;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.LangDataKeys;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.editor.Editor;
+import com.intellij.psi.PsiFile;
 
 /**
  * 命名Action
@@ -14,6 +18,11 @@ public class NamingAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        // TODO: insert action logic here
+        PsiFile psiFile = e.getData(LangDataKeys.PSI_FILE);
+        Editor editor = e.getData(PlatformDataKeys.EDITOR);
+        if (psiFile == null || editor == null) {
+            return;
+        }
+        int offset = editor.getCaretModel().getOffset();
     }
 }
