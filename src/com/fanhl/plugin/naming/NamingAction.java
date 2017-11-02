@@ -7,8 +7,11 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
+
+import java.util.List;
 
 /**
  * 命名Action
@@ -23,7 +26,13 @@ public class NamingAction extends AnAction {
     public void actionPerformed(AnActionEvent e) {
         PsiClass psiClass = getPsiClass(e);
         NamingDialog dialog = new NamingDialog(psiClass);
+
+        //这步是挂起的
         dialog.show();
+
+        if (dialog.isOK()) {
+            performNaming(psiClass, dialog.getSelectedFields());
+        }
     }
 
     @Override
@@ -47,5 +56,9 @@ public class NamingAction extends AnAction {
         int offset = editor.getCaretModel().getOffset();
         PsiElement elementAtOffset = psiFile.findElementAt(offset);
         return PsiTreeUtil.getParentOfType(elementAtOffset, PsiClass.class);
+    }
+
+    private void performNaming(PsiClass psiClass, List<PsiField> fields) {
+
     }
 }
