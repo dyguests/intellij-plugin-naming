@@ -1,7 +1,6 @@
 package com.fanhl.plugin.naming;
 
 import com.intellij.ide.util.DefaultPsiElementCellRenderer;
-import com.intellij.ide.util.PsiElementModuleRenderer;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.LabeledComponent;
 import com.intellij.psi.PsiClass;
