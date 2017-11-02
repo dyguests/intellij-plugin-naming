@@ -30,7 +30,7 @@ public class NamingDialog extends DialogWrapper {
         CollectionListModel<PsiField> myFields = new CollectionListModel<>(psiClass.getAllFields());
         fieldJBList = new JBList<>(myFields);
         fieldJBList.setCellRenderer(new DefaultPsiElementCellRenderer());
-        JBListUtils.makeItSelectAll(fieldJBList);
+//        JBListUtils.makeItSelectAll(fieldJBList);
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(fieldJBList);
         decorator.disableAddAction();
         decorator.disableRemoveAction();
