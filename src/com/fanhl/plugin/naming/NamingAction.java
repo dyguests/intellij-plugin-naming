@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
@@ -58,7 +59,30 @@ public class NamingAction extends AnAction {
         return PsiTreeUtil.getParentOfType(elementAtOffset, PsiClass.class);
     }
 
-    private void performNaming(PsiClass psiClass, List<PsiField> fields) {
+    /**
+     * 执行命名操作
+     *
+     * @param psiClass  psiClass
+     * @param psiFields selectedPsiFields
+     */
+    private void performNaming(PsiClass psiClass, List<PsiField> psiFields) {
+        new WriteCommandAction.Simple<Void>(psiClass.getProject(), psiClass.getContainingFile()) {
+            @Override
+            protected void run() throws Throwable {
+                naming(psiClass, psiFields);
+            }
+        }.execute();
+    }
 
+    /**
+     * 命名操作
+     *
+     * @param psiClass
+     * @param psiFields
+     */
+    private void naming(PsiClass psiClass, List<PsiField> psiFields) {
+        for (PsiField psiField : psiFields) {
+            psiField.setName(NamingUtils.toUpperCase(psiField.getName()));
+        }
     }
 }
